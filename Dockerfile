@@ -1,35 +1,38 @@
-FROM oven/bun:1-alpine AS base
+FROM oven/bun:1.1.45-alpine AS base
 WORKDIR /app
 
-# Install dependencies first, in a separate step to take advantage of Docker's caching.
-# Copy package.json and bun.lockb
-COPY package.json bun.lockb ./
-# Install all dependencies including dev dependencies
-RUN bun install --frozen-lockfile
-
-# Copy the rest of the source code
+# Copy all source code first
 COPY . .
 
-# Use a production-only install for the final image
-FROM oven/bun:1-alpine AS production-dependencies-env
-WORKDIR /app
-COPY package.json bun.lockb ./
-RUN bun install --production --frozen-lockfile
+# Install all dependencies including dev dependencies
+# Run this *after* copying all files to ensure full context
+RUN bun install --frozen-lockfile
 
-# Build the app
+# Use a production-only install for the final image
+FROM oven/bun:1.1.45-alpine AS production-dependencies-env
+WORKDIR /app
+# Copy only necessary files for production install
+COPY package.json bun.lockb ./
+# Allow lockfile discrepancies only for production install in Alpine
+RUN bun install --production --no-frozen-lockfile
+
+# Build the app using the base image with all dependencies
 FROM base AS build-env
-# Run the build command
+# Re-run install just in case, though cached layer should help
+# RUN bun install --frozen-lockfile 
+WORKDIR /app
+# Run the build command (ensure PWD is correct)
 RUN bun run build
 
 # Pull production dependencies and build artifacts into a clean image
-FROM oven/bun:1-alpine
+FROM oven/bun:1.1.45-alpine
 WORKDIR /app
 
 # Copy production dependencies
 COPY --from=production-dependencies-env /app/node_modules /app/node_modules
-# Copy built application
+# Copy built application artifacts from the build stage
 COPY --from=build-env /app/build /app/build
-# Copy package.json and bun.lockb in case the start script needs them
+# Copy essential files for running the app
 COPY package.json bun.lockb ./
 
 # Expose the port the app runs on (assuming 3000 based on previous Dockerfile comment)
