@@ -12,7 +12,7 @@ RUN bun install --frozen-lockfile
 FROM oven/bun:1.1.45-alpine AS production-dependencies-env
 WORKDIR /app
 # Copy only necessary files for production install
-COPY package.json bun.lockb ./
+COPY package.json bun.lock ./
 # Allow lockfile discrepancies only for production install in Alpine
 RUN bun install --production --no-frozen-lockfile
 
@@ -33,7 +33,7 @@ COPY --from=production-dependencies-env /app/node_modules /app/node_modules
 # Copy built application artifacts from the build stage
 COPY --from=build-env /app/build /app/build
 # Copy essential files for running the app
-COPY package.json bun.lockb ./
+COPY package.json bun.lock ./
 
 # Expose the port the app runs on (assuming 3000 based on previous Dockerfile comment)
 EXPOSE 3000
