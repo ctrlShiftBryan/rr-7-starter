@@ -1,31 +1,5 @@
 # Welcome to React Router!
 
-# FileScope
-
-FileScope is a developer utility tool designed to enhance code management and optimization through intelligent file searching and token analysis.
-
-## Features
-
-### Smart Search Mode
-- Rapidly locate files across your codebase using flexible search criteria
-- Stream search results in real-time as matches are found
-- Intelligently prioritize results based on relevance and search patterns
-
-### Token Analysis Mode
-- Visualize your codebase as an interactive tree structure
-- Calculate and display LLM token counts for individual files and directories
-- Build and manage ignore lists to exclude irrelevant files from analysis
-- Optimize your projects for token efficiency and cost management
-
-## Interface
-FileScope provides an intuitive browser-based GUI that allows you to:
-- Switch seamlessly between search and token analysis modes
-- Enter search queries and parameters with autocomplete support
-- View streaming results in a clean, organized format
-- Export findings for documentation or further analysis
-
-Perfect for developers working with large codebases or LLM-powered applications where token management is essential.
-
 ---
 *This project was initialized using the following React Router template:*
 
