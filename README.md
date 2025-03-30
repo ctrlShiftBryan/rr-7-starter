@@ -63,6 +63,24 @@ bun run dev
 
 Your application will be available at `http://localhost:5173`.
 
+### Linting
+
+This project uses [ESLint 9](https://eslint.org/docs/latest/use/configure/configuration-files-new) with its flat configuration format (`eslint.config.js`) for code linting and quality checks.
+
+Key configurations include:
+- **Plugins:** `@eslint/js`, `typescript-eslint`, `eslint-plugin-react`.
+- **Base Rules:** Recommended rulesets from the core plugins are applied.
+- **Ignores:** The `build/` and `.react-router/` directories (containing compiled/generated code) are ignored.
+- **Custom Rules:**
+    - `react/react-in-jsx-scope` is disabled as the project uses the modern JSX transform.
+    - `@typescript-eslint/no-unused-vars` is configured to allow variables and arguments prefixed with an underscore (`_`).
+
+To run the linter manually:
+
+```bash
+bun lint
+```
+
 ## Routing
 
 This project uses file-based routing powered by `@react-router/fs-routes`. Route modules are defined by creating files within the `app/routes/` directory.
