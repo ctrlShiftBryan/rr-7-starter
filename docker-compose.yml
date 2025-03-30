@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      # Map host port 33333 to container port 3000
+      - "33333:3000"
+    volumes:
+      # Mount the current directory to /app in the container
+      - .:/app
+      # Use a named volume or anonymous volume for node_modules
+      # This prevents the host node_modules from overwriting the container's node_modules
+      - /app/node_modules
+    # Keep stdin open for interactive processes
+    stdin_open: true
+    # Allocate a pseudo-TTY
+    tty: true
+

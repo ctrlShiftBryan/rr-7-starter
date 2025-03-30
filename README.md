@@ -30,13 +30,21 @@ bun install
 
 ### Development
 
-Start the development server with HMR:
+Start the development server with HMR locally:
 
 ```bash
 bun run dev
 ```
 
 Your application will be available at `http://localhost:5173`.
+
+Alternatively, you can run the development environment using Docker Compose:
+
+```bash
+docker-compose up --build
+```
+
+This will build the image defined in `Dockerfile.dev` and start the container. The application will be accessible at `http://localhost:33333`. Hot Module Replacement (HMR) and live code updates via volume mounting are enabled.
 
 ### Linting
 

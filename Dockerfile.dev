@@ -1,0 +1,24 @@
+# Use the official Bun image as a base
+FROM oven/bun:latest
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy package.json and bun.lockb to the working directory
+# These are copied first to leverage Docker cache
+COPY package.json bun.lock ./
+
+# Install dependencies
+RUN bun install --frozen-lockfile
+
+# Copy the rest of the application code
+# Note: In docker-compose, we'll use a volume mount, so this COPY is
+# primarily for building the image standalone or caching purposes.
+COPY . .
+
+# The application runs on port 3000, make it available
+EXPOSE 3000
+
+# The command to run the application (Vite config handles --host)
+CMD ["bun", "run", "dev"]
+
