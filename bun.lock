@@ -2,7 +2,7 @@
   "lockfileVersion": 0,
   "workspaces": {
     "": {
-      "name": "file-scope",
+      "name": "rr-7-starter",
       "dependencies": {
         "@radix-ui/react-slot": "^1.1.2",
         "@react-router/node": "^7.4.1",
