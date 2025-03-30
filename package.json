@@ -15,6 +15,7 @@
     "docker:build": "docker build . -t local-debug-build"
   },
   "dependencies": {
+    "@radix-ui/react-checkbox": "^1.1.4",
     "@radix-ui/react-slot": "^1.1.2",
     "@react-router/node": "^7.4.1",
     "@react-router/serve": "^7.4.1",
