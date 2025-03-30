@@ -136,6 +136,26 @@ Make sure to deploy the output of `npm run build`
 │   └── server/    # Server-side code
 ```
 
+## CI/CD
+
+This project uses GitHub Actions for Continuous Integration (CI).
+The workflow is defined in `.github/workflows/ci.yml` and runs on every push and pull request to any branch.
+
+The CI pipeline consists of the following jobs:
+
+1.  **Setup:** Installs dependencies using `bun install --frozen-lockfile`. This job runs first.
+2.  **Parallel Checks (depend on Setup):**
+    *   `build`: Runs `bun run build` to ensure the project builds successfully.
+    *   `typecheck`: Runs `bun run typecheck` to perform static type checking with TypeScript.
+    *   `lint`: Runs `bun run lint` to check code style and quality using ESLint.
+    *   `format_check`: Runs `bun run format:check` to verify code formatting with Prettier.
+3.  **Docker Build (depends on all checks):**
+    *   `docker_build`: If all the previous checks pass, this job builds a Docker image using the project's `Dockerfile`.
+    *   It uses `docker/metadata-action` to automatically generate relevant tags (based on branch, tag, or commit SHA) and labels for the Docker image.
+    *   Currently, it only *builds* the image (`push: false`) and does not push it to a registry.
+
+This setup ensures that code is automatically checked for build errors, type errors, linting issues, and formatting consistency before potentially being deployed. The final Docker build step confirms that the application can be successfully containerized.
+
 ## Styling
 
 This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
