@@ -81,6 +81,29 @@ To run the linter manually:
 bun lint
 ```
 
+
+## Formatting
+
+This project uses [Prettier](https://prettier.io/) for automatic code formatting. The configuration is defined in `prettier.config.js` with the following settings:
+
+- Uses `prettier-plugin-tailwindcss` for consistent Tailwind CSS class ordering
+- Print width: 100 characters
+- Tab width: 2 spaces
+- No tabs (uses spaces)
+- Semicolons: enabled
+- Single quotes: enabled
+- Trailing comma: ES5
+- Bracket spacing: enabled
+- Arrow function parentheses: always
+
+To format the code manually:
+
+```bash
+bun format
+```
+
+This command will format all relevant files according to the defined rules.
+
 ## Routing
 
 This project uses file-based routing powered by `@react-router/fs-routes`. Route modules are defined by creating files within the `app/routes/` directory.
