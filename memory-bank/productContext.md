@@ -18,7 +18,8 @@ This file provides a high-level overview of the project and the expected product
 * Bun as the all-in-one toolkit (runtime, bundler, package manager)
 * Docker support for containerization and deployment
 * Server-side data loading via React Router loaders
-* Comprehensive testing with Vitest, React Testing Library, and MSW
+* Comprehensive testing with Bun's test runner, React Testing Library
+* Comprehensive testing with Bun's test runner, React Testing Library
 * File system explorer functionality as a demonstration feature
 * External API data fetching example
 
@@ -28,5 +29,8 @@ This file provides a high-level overview of the project and the expected product
 * File-based routing system for clear route organization
 * Server components for data loading and processing
 * Clean separation between UI components and data fetching logic
+
+
+2025-03-30 14:53:00 - Updated product context to reflect the use of Bun's test runner instead of Vitest
 * Test-driven development approach with comprehensive test coverage
 * Containerized deployment for consistent environments

@@ -22,4 +22,27 @@ This file records architectural and implementation decisions using a list format
 * Will exclude node_modules, build directories, and git files to keep the tree manageable
 * API client will fetch from JSONPlaceholder API as a simple example
 * Index route will display both data sources in a clean, user-friendly UI
+
+
+2025-03-30 14:53:00 - Decision: Use Bun's test runner instead of Vitest
+
+## Decision
+
+* Switched from Vitest to Bun's built-in test runner for testing
+* Updated tsconfig.json to include bun-types
+* Created tests using Bun's test API (describe, it, expect)
+
+## Rationale
+
+* Bun's test runner is faster and more lightweight than Vitest
+* Reduces dependencies and simplifies the project setup
+* Bun's test API is compatible with Jest syntax, making it familiar to most developers
+* Provides better integration with the Bun runtime environment
+
+## Implementation Details
+
+* Added bun-types to tsconfig.json
+* Created test files with .test.ts extension
+* Used Bun's test API (describe, it, expect) for writing tests
+* Implemented file system tests with temporary directories for isolation
 * Will include comprehensive tests for all new functionality

@@ -29,4 +29,15 @@ This file documents recurring patterns and standards used in the project.
 * **Mock Services**: Using MSW to mock external API requests
 * **File System Mocking**: Mocking Node.js fs module for testing file operations
 * **Test-Driven Development**: Writing tests before implementing functionality
+
+
+2025-03-30 14:53:00 - Updated testing patterns to reflect Bun test runner usage
+
+## Testing Patterns (Updated)
+
+* **Bun Test Runner**: Using Bun's built-in test runner instead of Vitest
+* **Jest-Compatible API**: Leveraging Bun's Jest-compatible test API (describe, it, expect)
+* **Temporary Test Directories**: Creating isolated temporary directories for file system tests
+* **Clean Test Teardown**: Properly cleaning up test artifacts after test execution
+* **Focused Test Files**: Organizing tests alongside the code they test with .test.ts extension
 * **Coverage Reporting**: Tracking test coverage to ensure comprehensive testing
