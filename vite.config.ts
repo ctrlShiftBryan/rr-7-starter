@@ -4,6 +4,7 @@ import { defineConfig } from 'vite';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig({
+  /*
   server: {
     host: '0.0.0.0', // Allow connections from outside the container
     port: 3000,     // Explicitly set the container port
@@ -11,5 +12,6 @@ export default defineConfig({
       port: 3000, // Use the same port for HMR inside the container
     },
   },
+  */
   plugins: [tailwindcss(), reactRouter(), tsconfigPaths()],
 });
