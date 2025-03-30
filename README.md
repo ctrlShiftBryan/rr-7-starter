@@ -1,7 +1,8 @@
 # Welcome to React Router!
 
 ---
-*This project was initialized using the following React Router template:*
+
+_This project was initialized using the following React Router template:_
 
 A modern, production-ready template for building full-stack React applications using React Router.
 
@@ -42,19 +43,19 @@ Your application will be available at `http://localhost:5173`.
 This project uses [ESLint 9](https://eslint.org/docs/latest/use/configure/configuration-files-new) with its flat configuration format (`eslint.config.js`) for code linting and quality checks.
 
 Key configurations include:
+
 - **Plugins:** `@eslint/js`, `typescript-eslint`, `eslint-plugin-react`.
 - **Base Rules:** Recommended rulesets from the core plugins are applied.
 - **Ignores:** The `build/` and `.react-router/` directories (containing compiled/generated code) are ignored.
 - **Custom Rules:**
-    - `react/react-in-jsx-scope` is disabled as the project uses the modern JSX transform.
-    - `@typescript-eslint/no-unused-vars` is configured to allow variables and arguments prefixed with an underscore (`_`).
+  - `react/react-in-jsx-scope` is disabled as the project uses the modern JSX transform.
+  - `@typescript-eslint/no-unused-vars` is configured to allow variables and arguments prefixed with an underscore (`_`).
 
 To run the linter manually:
 
 ```bash
 bun lint
 ```
-
 
 ## Formatting
 
@@ -83,6 +84,7 @@ This command will format all relevant files according to the defined rules.
 This project uses file-based routing powered by `@react-router/fs-routes`. Route modules are defined by creating files within the `app/routes/` directory.
 
 The filename determines the URL path, following specific conventions:
+
 - `_index.tsx` -> `/`
 - `about.tsx` -> `/about`
 - `users.$id.tsx` -> `/users/:id` (dynamic segment)
@@ -145,14 +147,14 @@ The CI pipeline consists of the following jobs:
 
 1.  **Setup:** Installs dependencies using `bun install --frozen-lockfile`. This job runs first.
 2.  **Parallel Checks (depend on Setup):**
-    *   `build`: Runs `bun run build` to ensure the project builds successfully.
-    *   `typecheck`: Runs `bun run typecheck` to perform static type checking with TypeScript.
-    *   `lint`: Runs `bun run lint` to check code style and quality using ESLint.
-    *   `format_check`: Runs `bun run format:check` to verify code formatting with Prettier.
+    - `build`: Runs `bun run build` to ensure the project builds successfully.
+    - `typecheck`: Runs `bun run typecheck` to perform static type checking with TypeScript.
+    - `lint`: Runs `bun run lint` to check code style and quality using ESLint.
+    - `format_check`: Runs `bun run format:check` to verify code formatting with Prettier.
 3.  **Docker Build (depends on all checks):**
-    *   `docker_build`: If all the previous checks pass, this job builds a Docker image using the project's `Dockerfile`.
-    *   It uses `docker/metadata-action` to automatically generate relevant tags (based on branch, tag, or commit SHA) and labels for the Docker image.
-    *   Currently, it only *builds* the image (`push: false`) and does not push it to a registry.
+    - `docker_build`: If all the previous checks pass, this job builds a Docker image using the project's `Dockerfile`.
+    - It uses `docker/metadata-action` to automatically generate relevant tags (based on branch, tag, or commit SHA) and labels for the Docker image.
+    - Currently, it only _builds_ the image (`push: false`) and does not push it to a registry.
 
 This setup ensures that code is automatically checked for build errors, type errors, linting issues, and formatting consistency before potentially being deployed. The final Docker build step confirms that the application can be successfully containerized.
 
