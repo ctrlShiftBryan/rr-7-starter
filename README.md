@@ -8,6 +8,17 @@ A modern, production-ready template for building full-stack React applications u
 
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
 
+This project is built with a modern, production-ready toolchain:
+	•	react-router – Handles all routing and navigation, including file-based routes and SSR.
+	•	typescript – Adds static typing to JavaScript for better DX and maintainability.
+	•	bun – Blazing-fast all-in-one toolkit (runtime, bundler, package manager).
+	•	tailwindcss – Utility-first CSS framework for building modern UIs quickly.
+	•	shadcn/ui – Beautiful, accessible UI components built with Tailwind and Radix.
+	•	eslint – Linter for catching code issues and enforcing style rules.
+	•	prettier – Opinionated code formatter for consistent code style.
+	•	docker – Containerizes the app for consistent local and production environments.
+	•	github actions – Automates CI/CD with linting, testing, building, and Docker publishing pipelines.
+
 ## Features
 
 - 🚀 Server-side rendering
