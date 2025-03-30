@@ -192,7 +192,7 @@ You can find the documentation for available components [here](https://ui.shadcn
 To add a new component, run the following command:
 
 ```bash
-bunx --bun shadcn-ui@latest add <component-name>
+bunx --bun shadcn@latest add <component-name>
 ```
 
 Replace `<component-name>` with the desired component (e.g., `textarea`, `button`).
