@@ -1,5 +1,34 @@
 # Welcome to React Router!
 
+# FileScope
+
+FileScope is a developer utility tool designed to enhance code management and optimization through intelligent file searching and token analysis.
+
+## Features
+
+### Smart Search Mode
+- Rapidly locate files across your codebase using flexible search criteria
+- Stream search results in real-time as matches are found
+- Intelligently prioritize results based on relevance and search patterns
+
+### Token Analysis Mode
+- Visualize your codebase as an interactive tree structure
+- Calculate and display LLM token counts for individual files and directories
+- Build and manage ignore lists to exclude irrelevant files from analysis
+- Optimize your projects for token efficiency and cost management
+
+## Interface
+FileScope provides an intuitive browser-based GUI that allows you to:
+- Switch seamlessly between search and token analysis modes
+- Enter search queries and parameters with autocomplete support
+- View streaming results in a clean, organized format
+- Export findings for documentation or further analysis
+
+Perfect for developers working with large codebases or LLM-powered applications where token management is essential.
+
+---
+*This project was initialized using the following React Router template:*
+
 A modern, production-ready template for building full-stack React applications using React Router.
 
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
@@ -21,7 +50,7 @@ A modern, production-ready template for building full-stack React applications u
 Install the dependencies:
 
 ```bash
-npm install
+bun install
 ```
 
 ### Development
@@ -29,17 +58,31 @@ npm install
 Start the development server with HMR:
 
 ```bash
-npm run dev
+bun run dev
 ```
 
 Your application will be available at `http://localhost:5173`.
+
+## Routing
+
+This project uses file-based routing powered by `@react-router/fs-routes`. Route modules are defined by creating files within the `app/routes/` directory.
+
+The filename determines the URL path, following specific conventions:
+- `_index.tsx` -> `/`
+- `about.tsx` -> `/about`
+- `users.$id.tsx` -> `/users/:id` (dynamic segment)
+- `_auth.login.tsx` -> `/login` (pathless layout route)
+
+For more details on the conventions (including nested routes, splats, optional segments, etc.), refer to the [React Router File Route Conventions documentation](https://reactrouter.com/how-to/file-route-conventions).
+
+The routing configuration is generated automatically via the `app/routes.ts` file, which uses `flatRoutes()`.
 
 ## Building for Production
 
 Create a production build:
 
 ```bash
-npm run build
+bun run build
 ```
 
 ## Deployment
@@ -81,6 +124,20 @@ Make sure to deploy the output of `npm run build`
 ## Styling
 
 This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
+
+### UI Components
+
+This project utilizes [shadcn/ui](https://ui.shadcn.com/) for its component library, which builds upon Tailwind CSS.
+
+You can find the documentation for available components [here](https://ui.shadcn.com/docs/components/accordion).
+
+To add a new component, run the following command:
+
+```bash
+bunx --bun shadcn-ui@latest add <component-name>
+```
+
+Replace `<component-name>` with the desired component (e.g., `textarea`, `button`).
 
 ---
 
